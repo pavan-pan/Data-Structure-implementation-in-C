@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdbool.h>
+#include <stdlib.h>
 
 #define SIZE  5
 
@@ -70,6 +71,26 @@ bool queue_empty()
         return false;
 }
 
+void push_into_queue()
+{
+    int tmp = 0;
+    printf ("Enter value to push into the queue\n");
+    scanf ("%d", &tmp);
+    if (queue_push(tmp))
+        printf ("push successfull\n");
+    else
+        printf ("push unsuccessfull\n");
+}
+
+void pop_from_queue()
+{
+    int tmp = 0;
+    if (queue_pop(&tmp))
+        printf ("pop successfull, popped value is : %d\n", tmp);
+    else
+        printf ("pop unsuccessfull\n");
+}
+
 int main()
 {
     printf ("Hello world\n");
@@ -77,39 +98,32 @@ int main()
     print_queue();
 
     int popped_val = 0;
+    int input_val = 0;
 
-    printf ("add to queue : %d\n", queue_push(20));
-    print_queue();
-    printf ("add to queue : %d\n", queue_push(21));
-    print_queue();
-    printf ("add to queue : %d\n", queue_push(22));
-    print_queue();
-    printf ("add to queue : %d\n", queue_push(23));
-    print_queue();
-    
-    printf ("add to queue : %d\n", queue_push(24));
-    print_queue();
-    printf ("add to queue : %d\n", queue_push(25));
-    print_queue();
+    while (1)
+    {
+        printf ("Enter 1 to Push into the Queue\n");
+        printf ("Enter 2 to Pop from the Queue\n");
+        printf ("Enter 3 to Print the Queue\n");
+        printf ("Enter 4 to Exit\n");
+        scanf ("%d", &input_val);
 
-    printf ("pop from queue : %d\n", queue_pop(&popped_val));
-    printf ("popped value : %d\n", popped_val);
-    print_queue();
-    printf ("add to queue : %d\n", queue_push(44));
-    print_queue();
-    printf ("add to queue : %d\n", queue_push(42));
-    print_queue();
-    printf ("pop from queue : %d\n", queue_pop(&popped_val));
-    printf ("popped value : %d\n", popped_val);
-    print_queue();
-    printf ("pop from queue : %d\n", queue_pop(&popped_val));
-    printf ("popped value : %d\n", popped_val);
-    print_queue();
-    printf ("pop from queue : %d\n", queue_pop(&popped_val));
-    printf ("popped value : %d\n", popped_val);
-    print_queue();
-    printf ("pop from queue : %d\n", queue_pop(&popped_val));
-    printf ("popped value : %d\n", popped_val);
-    print_queue();
+        switch (input_val)
+        {
+            case 1:
+                push_into_queue();
+                break;
+            case 2:
+                pop_from_queue();
+                break;
+            case 3:
+                print_queue();
+                break;
+            case 4:
+                exit;
+            default:
+                printf("Invalid option");
+        }
+    }
     return 0;
 }
