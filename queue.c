@@ -64,7 +64,7 @@ int queue_pop(int *val)
 
 bool queue_empty()
 {
-    if (queue_front == queue_back)
+    if (capacity == 0)
         return true;
     else
         return false;
